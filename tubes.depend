@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1555299228 source:c:\users\nuril\documents\@kuliah\struktur data\tubes\tubes\main.cpp
+	<bits/stdc++.h>
+	"fungsi.cpp"
+
+1555299967 c:\users\nuril\documents\@kuliah\struktur data\tubes\tubes\fungsi.cpp
+	"head.h"
+
+1555299037 c:\users\nuril\documents\@kuliah\struktur data\tubes\tubes\head.h
+
