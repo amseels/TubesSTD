@@ -38,6 +38,8 @@ void menu()
     cout<<"5. Hapus Bus"<<endl;
     cout<<"6. Tampilkan Data Supir"<<endl;
     cout<<"7. Tampilkan Data Bis"<<endl;
+    cout<<"8. Supir yang memiliki jumlah bis paling banyak"<<endl;
+    cout<<"9. Supir yang memiliki jumlah bis paling sedikit"<<endl;
     cout<<endl;
     cout<<"Pilihan anda : ";
     cin>>pilihan;
@@ -76,6 +78,14 @@ void menu()
         case 7:
             cout<<"Data Seluruh Bus"<<endl;
             printBus(B);
+            break;
+        case 8:
+            maxSupir(S);
+            break;
+        case 9:
+            minSupir(S);
+            break;
+        default :
             break;
     }
     cout<<endl;

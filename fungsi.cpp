@@ -150,13 +150,11 @@ void insertLastRelasi(adrSupir &S, adrRelasi P)
     adrRelasi lastRelasi=firstRelasi(S);
     if (lastRelasi==NULL)
     {
-        cout<<"masuk sini"<<endl;
         firstRelasi(S)=P;
         nextRelasi(P)=NULL;
     }
     else
     {
-        cout<<"malah ke sini"<<endl;
         while (nextRelasi(lastRelasi)!=NULL)
         {
             lastRelasi=nextRelasi(lastRelasi);
@@ -181,4 +179,68 @@ void insertRelasi(listSupir &S, string namaSupir, string namaKondektur, listBus 
 
     adrRelasi newRelasi2=alokasiRelasi(bus);
     insertLastRelasi(kondektur,newRelasi2);
+}
+
+int countBus(adrSupir S)
+{
+    int counts=0;
+    adrRelasi P=firstRelasi(S);
+    while (P!=NULL)
+    {
+        counts++;
+        P=nextRelasi(P);
+    }
+    return counts;
+}
+
+void maxSupir(listSupir S)
+{
+    adrSupir i=firstSupir(S);
+    int maks=0;
+    adrSupir supirTerbanyak=NULL;
+    while (i!=NULL)
+    {
+        int tmp=countBus(i);
+        if (tmp>maks)
+        {
+            maks=tmp;
+            supirTerbanyak=i;
+        }
+        i=nextSupir(i);
+    }
+
+    cout<<"Supir dengan bus terbanyak adalah "<<nama(supirTerbanyak)<<" : ";
+    adrRelasi R=firstRelasi(supirTerbanyak);
+        while (R!=NULL)
+        {
+            cout<<kode(bus(R))<<", ";
+            R=nextRelasi(R);
+        }
+    cout<<endl;
+}
+
+void minSupir(listSupir S)
+{
+    adrSupir i=firstSupir(S);
+    int mins=1000;
+    adrSupir supir=NULL;
+    while (i!=NULL)
+    {
+        int tmp=countBus(i);
+        if (tmp<mins)
+        {
+            mins=tmp;
+            supir=i;
+        }
+        i=nextSupir(i);
+    }
+
+    cout<<"Supir dengan bus paling sedikit adalah "<<nama(supir)<<" : ";
+    adrRelasi R=firstRelasi(supir);
+        while (R!=NULL)
+        {
+            cout<<kode(bus(R))<<", ";
+            R=nextRelasi(R);
+        }
+    cout<<endl;
 }
