@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<iostream>
 #include "fungsi.cpp"
 
 using namespace std;
@@ -68,6 +68,12 @@ void menu()
         case 4:
             break;
         case 5 :
+            {
+                string kodeBus;
+                cout<<"masukan kode bus : ";
+                cin>>kodeBus;
+                deleteBus(B,kodeBus);
+            }
             break;
         case 6:
             cout<<"Data Seluruh Supir"<<endl;

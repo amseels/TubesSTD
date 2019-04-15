@@ -13,6 +13,7 @@
 #define bus(R)  R->bus
 #define firstRelasi(S) S->firstRelasi
 #define null NULL
+#define nil NULL
 using namespace std;
 
 typedef struct elmBus *adrBus;

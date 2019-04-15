@@ -182,3 +182,108 @@ void insertRelasi(listSupir &S, string namaSupir, string namaKondektur, listBus 
     adrRelasi newRelasi2=alokasiRelasi(bus);
     insertLastRelasi(kondektur,newRelasi2);
 }
+
+void deleteFirstBus (listBus &B, adrBus &P) {
+    if (firstBus(B) != nil) {
+        P = firstBus(B);
+        firstBus(B) = nextBus(firstBus(B));
+        nextBus(P)=nil;
+    }
+    else {
+        cout<<"kosong"<<endl;
+    }
+}
+
+void deleteFirstSupir (listSupir &S,adrSupir &P) {
+    if (firstSupir(S) != nil) {
+        P = firstSupir(S);
+        firstSupir(S) = nextSupir(firstSupir(S));
+        nextSupir(P)=nil;
+    }
+    else {
+        cout<<"kosong"<<endl;
+    }
+}
+
+void deleteFirstRelasi (adrSupir &S, adrRelasi &P) {
+    P=firstRelasi(S);
+    if (firstRelasi(S) != nil) {
+        P = firstRelasi(S);
+        firstRelasi(S) = nextRelasi(firstRelasi(S));
+        nextRelasi(P)=nil;
+    }
+    else {
+        cout<<"kosong"<<endl;
+    }
+}
+
+void deleteLastBus (listBus &B, adrBus &P) {
+    adrBus Q;
+    Q = firstBus(B);
+    P = nextBus(Q);
+    while (nextBus(Q) != nil) {
+        Q = nextBus(Q);
+        P = nextBus(P);
+    }
+    nextBus(Q) = nil;
+}
+
+void deleteLastSupir (listSupir &S, adrSupir &P) {
+    adrSupir Q;
+    Q = firstSupir(S);
+    P = nextSupir(Q);
+    while (nextSupir(Q) != nil) {
+        Q = nextSupir(Q);
+        P = nextSupir(P);
+    }
+    nextSupir(Q) = nil;
+}
+
+void deleteLastRelasi (adrSupir &S,adrRelasi &P) {
+    adrRelasi Q;
+    Q = firstRelasi(S);
+    P = nextRelasi(Q);
+    while (nextRelasi(Q) != nil) {
+        Q = nextRelasi(Q);
+        P = nextRelasi(P);
+    }
+    nextRelasi(Q) = nil;
+}
+
+void deleteAfterBus (listBus &B,adrBus &P) {
+    adrBus Q = firstBus(B);
+     while (nextBus(Q) != P) {
+        Q = nextBus(Q);
+     }
+     nextBus(Q) = nextBus(P);
+     nextBus(P) = nil;
+}
+
+
+void deleteAfterSupir (listSupir &S,adrSupir &P) {
+    adrSupir Q = firstSupir(S);
+     while (nextSupir(Q) != P) {
+        Q = nextSupir(Q);
+     }
+     nextSupir(Q) = nextSupir(P);
+     nextSupir(P) = nil;
+}
+
+void deleteBus (listBus &B, string kodeBus) {
+    adrBus P = searchBus (B,kodeBus);
+    if (firstBus(B)!= nil) {
+         if (P == firstBus(B)) {
+                cout<<"deletefirst";
+            deleteFirstBus(B,P);
+         }
+         else if (next(P) == nil ) {
+            deleteLastBus(B,P);
+            cout<<"deletelast";
+         }
+         else {
+            deleteAfterBus(B,P);
+            cout<<"deleteLast";
+         }
+    }
+
+}
